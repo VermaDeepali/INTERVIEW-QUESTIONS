@@ -24,12 +24,11 @@
    To maintain versions of libs being installed in a project we use package.json and package-lock.json so that there is no issue in porting that app to a different environment.
 
 6. How is Node.js better than other frameworks most popularly used?
--> Node.js provides simplicity in development because of its non-blocking I/O and event-based model results in short response time and concurrent processing, unlike other frameworks where developers have to use thread management. 
- 
--> It runs on a chrome v8 engine which is written in c++ and is highly performant with constant improvement. 
- 
--> Also since we will use Javascript in both the frontend and backend the development will be much faster. 
- 
+-> Node.js provides simplicity in development because of its non-blocking I/O and event-based model results in short response time and concurrent processing, unlike other frameworks where developers have to use thread management.
+-> It runs on a chrome v8 engine which is written in c++ and is highly performant with constant improvement.
+-> Also since we will use Javascript in both the frontend and backend the development will be much faster.
 -> And at last, there are sample libraries so that we don’t need to reinvent the wheel.
+
+7. 
 
 
