@@ -1,0 +1,196 @@
+% Node.js 3–5 Years Interview Q&A Sheet (Scenario-Based)
+
+1. API Slows Under High Traffic
+
+Q: API is slow with 10k req/min. What do you do?
+A:
+
+  Check logs/metrics (CPU, memory, event loop).
+
+  Horizontal scaling (Node cluster, PM2, load balancer).
+
+  Cache frequently accessed data (Redis).
+
+  Optimize DB queries & use pagination.
+
+  Offload heavy processing to background jobs (BullMQ).
+
+
+2. Event Loop Blocking
+
+Q: CPU-heavy code blocks requests. Fix?
+A:
+
+  Use worker threads for CPU-intensive tasks.
+  
+  Offload to a microservice or queue (Bull/Kafka).
+  
+  Avoid synchronous calls (fs.readFileSync, loops).
+
+3. Real-Time Chat Design
+
+Q: Millions of users, real-time messages. Design?
+A:
+
+  WebSockets (Socket.IO), JWT auth.
+  
+  Redis pub/sub for scaling multiple instances.
+  
+  Sticky sessions for load balancer.
+  
+  Persist messages in DB, queue offline messages.
+
+4. Large File Uploads
+
+Q: Server crashes on large uploads. Solution?
+A:
+
+  Use streams, avoid buffering.
+  
+  Multer middleware with size limits.
+  
+  Upload directly to S3 / cloud storage.
+  
+  Validate MIME type and extension.
+
+5. Secure Authentication
+
+Q: How to secure login/signup?
+A:
+
+  Passwords hashed with bcrypt.
+  
+  JWT access & refresh tokens.
+  
+  Role-based access control.
+  
+  Rate limiting & HTTPS enforced.
+
+6. Memory Leak Detection
+
+Q: Node service memory grows over time. How to debug?
+A:
+
+  Use heap snapshots (Chrome DevTools) or clinic.js.
+  
+  Check for unreleased timers, global objects, unremoved listeners.
+  
+  Use streaming instead of buffering large data.
+
+7. API Under DDoS / Rate-Limiting
+
+Q: How to prevent abuse?
+A:
+
+  Express-rate-limit middleware.
+  
+  Use Helmet for security headers.
+  
+  CORS restrictions, input validation.
+  
+  Deploy behind API Gateway or Cloudflare.
+
+8. Database Performance
+
+Q: MongoDB queries slow for 5M+ records. Fix?
+A:
+
+  Add indexes.
+  
+  Use projections and limit returned fields.
+  
+  Pagination (skip/limit or cursor).
+  
+  Optimize aggregation pipelines.
+
+9. Background Jobs
+
+Q: Heavy tasks block requests. Solution?
+A:
+
+  Offload to queues (BullMQ, RabbitMQ).
+  
+  Process async jobs in worker processes.
+  
+  Notify frontend via events once done.
+
+10. API Versioning
+
+Q: How to handle breaking changes?
+A:
+
+  Maintain versioned routes: /api/v1/..., /api/v2/....
+  
+  Deprecate old versions gradually.
+  
+  Use semantic versioning in API responses.
+
+11. Deployment & CI/CD
+
+Q: How to deploy Node.js for 24/7 uptime?
+A:
+
+  PM2 for process management and auto-restart.
+  
+  Docker for consistency.
+  
+  Rolling deployments for zero downtime.
+  
+  Health checks, logging, and monitoring.
+
+12. Logging & Monitoring
+
+Q: How to monitor production Node.js apps?
+A:
+
+  Use Winston or Bunyan for structured logging.
+  
+  Monitor CPU, memory, event loop lag.
+  
+  Integrate alerts with Datadog, New Relic, or Prometheus.
+
+13. Microservices Communication
+
+Q: Node.js services need to talk to each other. How?
+A:
+
+  Use REST or gRPC for synchronous calls.
+  
+  Use message broker (RabbitMQ, Kafka) for async events.
+  
+  Handle retries and failures gracefully.
+
+14. Handling Crashes
+
+Q: Node app crashes unexpectedly. Fix?
+A:
+
+  Use PM2 or forever for auto-restart.
+  
+  Graceful shutdown: close DB connections, stop timers.
+  
+  Log stack trace for debugging.
+  
+  Investigate memory leaks or uncaught exceptions.
+
+15. Security & Input Validation
+
+Q: How to protect API endpoints?
+A:
+
+  Validate all inputs (Joi/Zod).
+  
+  Sanitize data to prevent injection.
+  
+  Enable HTTPS, Helmet headers.
+  
+  Use JWT auth & RBAC for authorization.
+
+
+***Tips for 3–5 Years Experience:
+
+  Always explain why you choose a solution.
+  
+  Mention scalability, performance, and security.
+  
+  Give production examples if possible.
